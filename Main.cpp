@@ -34,8 +34,10 @@ void Main()
 	Window::Resize(1280, 720);
 	Graphics::SetBackground(Color(40, 150, 255));
 	Graphics3D::SetAmbientLight(ColorF(0.2, 0.3, 0.4));
-	Graphics3D::SetFog(Fog::SquaredExponential(Color(40, 150, 255), 0.002));
-	Graphics3D::SetFogForward(Fog::SquaredExponential(Color(40, 150, 255), 0.002));
+
+	const Fog fog(Fog::SquaredExponential(Color(40, 150, 255), 0.002));
+	Graphics3D::SetFog(fog);
+	Graphics3D::SetFogForward(fog);
 
 	const VertexShader vsTerrain(L"Example/Shaders/Terrain3D.hlsl");
 	const PixelShader psTerrain(L"Example/Shaders/Terrain3D.hlsl");
